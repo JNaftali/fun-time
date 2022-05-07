@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "webpack"
+    "build": "NODE_OPTIONS=\"--loader ts-node/esm\" webpack"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +14,14 @@
     "node": "16.15.0"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-typescript": "^7.16.7",
     "webpack": "^5.72.0"
   },
   "devDependencies": {
+    "babel-loader": "^8.2.5",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4",
     "webpack-cli": "^4.9.2"
   }
 }
