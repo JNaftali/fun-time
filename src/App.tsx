@@ -9,8 +9,8 @@ export default function App() {
       <head></head>
       <body>
         <Routes>
-          <Route path="/" element={<div>home</div>}></Route>
-          <Route path="butts" element={<div>hehe butts</div>}></Route>
+          <Route path="/" element={<div>home</div>} />
+          <Route path="butts" element={<div>hehe butts</div>} />
         </Routes>
         {isClient && <div>We hydratin</div>}
         <script src="/client.js" />

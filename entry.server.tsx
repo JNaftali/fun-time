@@ -10,9 +10,7 @@ app.use(express.static(path.resolve("./dist")));
 app.get("*", (req, res) => {
   const stream = renderToPipeableStream(
     <StaticRouter location={req.url}>
-      <>
-        <App />
-      </>
+      <App />
     </StaticRouter>
   );
   stream.pipe(res);
