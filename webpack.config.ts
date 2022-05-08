@@ -6,23 +6,19 @@ const __dirname = dirname(__filename);
 
 const config: Configuration = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  entry: "./src/index.ts",
+  target: "browserslist",
+  entry: "./src/index.tsx",
   module: {
     rules: [
       {
-        test: /\.(ts|js)?$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-typescript"],
-          },
-        },
+        use: { loader: "babel-loader" },
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
