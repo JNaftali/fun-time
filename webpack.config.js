@@ -1,3 +1,4 @@
+import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
@@ -18,6 +19,9 @@ const config = {
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    plugins: [
+      new TsconfigPathsPlugin({ extensions: [".js", ".jsx", ".ts", ".tsx"] }),
+    ],
   },
   output: {
     path: path.resolve(__dirname, "dist"),

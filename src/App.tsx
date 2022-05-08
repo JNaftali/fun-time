@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 
 export default function App() {
   const isClient = useIsClient();
@@ -7,7 +8,10 @@ export default function App() {
     <html>
       <head></head>
       <body>
-        <div>sup bitches</div>
+        <Routes>
+          <Route path="/" element={<div>home</div>}></Route>
+          <Route path="butts" element={<div>hehe butts</div>}></Route>
+        </Routes>
         {isClient && <div>We hydratin</div>}
         <script src="/client.js" />
       </body>
