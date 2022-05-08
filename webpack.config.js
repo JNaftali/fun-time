@@ -1,13 +1,12 @@
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import { Configuration } from "webpack";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const config: Configuration = {
+/** @type {import('webpack').Configuration} */
+const config = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  target: "browserslist",
-  entry: "./src/index.tsx",
+  entry: "./entry.client.tsx",
   module: {
     rules: [
       {
