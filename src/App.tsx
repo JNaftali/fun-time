@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-export default function App() {
+export default function App({ initialData }: { initialData: any }) {
   const isClient = useIsClient();
 
   return (
@@ -13,6 +13,13 @@ export default function App() {
           <Route path="butts" element={<div>hehe butts</div>} />
         </Routes>
         {isClient && <div>We hydratin</div>}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+          window.initialData = ${JSON.stringify(initialData)}
+        `,
+          }}
+        />
         <script src="/client.js" />
       </body>
     </html>

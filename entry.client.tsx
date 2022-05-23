@@ -4,7 +4,10 @@ import App from "./src/App";
 
 const root = hydrateRoot(
   document,
-  <DataBrowserRouter>
-    <Route path="*" element={<App />} />
+  <DataBrowserRouter hydrationData={{}} fallbackElement={undefined as any}>
+    <Route
+      path="*"
+      element={<App initialData={(window as any).initialData} />}
+    />
   </DataBrowserRouter>
 );

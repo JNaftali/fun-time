@@ -1,19 +1,24 @@
 import path from "path";
 import express from "express";
-import { renderToPipeableStream } from "react-dom/server";
+import { renderToPipeableStream, renderToString } from "react-dom/server";
 import App from "./src/App";
-import { StaticRouter } from "react-router-dom/server";
+import { DataStaticRouter } from "react-router-dom/server";
+import { Route } from "react-router-dom";
+import type { RouterInit } from "@remix-run/router";
 
+type RouterState = Partial<RouterInit["hydrationData"]>;
 const app = express();
 app.use(express.static(path.resolve("./dist")));
 
 app.get("*", (req, res) => {
-  const stream = renderToPipeableStream(
-    <StaticRouter location={req.url}>
-      <App />
-    </StaticRouter>
+  const data: RouterState = {};
+
+  const markup = renderToString(
+    <DataStaticRouter data={data} location={req.url}>
+      <Route path="*" element={<App initialData={data} />} />
+    </DataStaticRouter>
   );
-  stream.pipe(res);
+  res.send(markup);
 });
 
 const port = 3000;
